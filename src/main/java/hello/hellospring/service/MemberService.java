@@ -5,6 +5,7 @@ import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,7 @@ public class MemberService {
 
 
 //    회원가입
-    public Long join(Member member) {
+    public Long join(Member member) throws SQLException {
         validateDuplicateMember(member);// 중복회원검증
         memberRepository.save(member);
         return member.getId();
